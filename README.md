@@ -50,7 +50,8 @@ In case of problems you can check logs in docker desktop containers and look up 
   * check if you have enough permission on all of the files,
   * try turning off your browser extensions,
   * check if some files were not added due to .gitignore,
-  * verify whether some cache or .php files are not causing issues.
+  * verify whether some cache or .php files are not causing issues,
+  * check if database is already ready.
 * If some ports are unavailable you can remove them from docker-compose.yml - some free should be chosen automatically. Otherwise you can set them manually.
 * If there is problem with closing containers or running them make sure everything was properly closed or/and restart computer.
 
