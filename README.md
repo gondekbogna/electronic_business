@@ -3,7 +3,7 @@
 Project from electronic business on fifth semester of Computer Science on Gdansk University of Technology.
 
 ## Installation
-**Please make your fork of a project and copy the project url from your own fork!**
+**Please make your own fork of the project and copy url from your own fork!**
 ```cmd
 git clone [project url] [project directory]
 sudo chmod +777 [project directory]
@@ -37,8 +37,8 @@ docker compose down
 2. If containers are running close them down.
 3. ```git pull upstream```
 4. Clear your browser cache.
-5. ```sudo apt-get clear```
-6. ```sudo apt-get autoclear```
+5. ```sudo apt-get clean```
+6. ```sudo apt-get autoclean```
 7. Remove old containers from docker desktop. Don't remove volumes and images.
 8. Run containers again.
 9. If everything is correct push the changes to keep your fork up to date.
