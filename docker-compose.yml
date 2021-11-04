@@ -1,0 +1,46 @@
+version: '3.9' # Latest as for 10.31.2021 (DD/MM/YYYY)
+
+services:
+   sql:
+     image: mysql:latest
+     volumes:
+       - ./database:/docker-entrypoint-initdb.d # host directory : containter directory
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: password
+       MYSQL_DATABASE: ps_database
+       MYSQL_USER: user
+       MYSQL_PASSWORD: password
+     command: mysqld --sql_mode=""
+
+   php_admin:
+      image: phpmyadmin/phpmyadmin:latest
+      depends_on:
+      - sql
+      links:
+        - sql:ps_database
+      ports:
+        - 8181:80
+      environment:
+        PMA_HOST: sql
+        MYSQL_USERNAME: user
+        MYSQL_ROOT_PASSWORD: password
+
+   presta_shop: # ADMIN: /main | admin@gmail.com | password
+     depends_on:
+       - sql
+     image: prestashop/prestashop:latest
+     ports:
+       - 8080:80
+     restart: always
+     environment:
+       PS_INSTALL_AUTO: 0
+       PS_ERASE_DB: 0 # Drop the mysql database. All previous mysql data will be lost.
+       PS_DEV_MODE: 0 # Development mode.
+       PS_DOMAIN: localhost:8080
+       DB_SERVER: sql
+       DB_USER: user
+       DB_PASSWD: password
+       DB_NAME: ps_database
+     volumes:
+       - ./presta_shop:/var/www/html
