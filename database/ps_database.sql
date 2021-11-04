@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: sql
--- Generation Time: Nov 04, 2021 at 03:42 PM
+-- Generation Time: Nov 04, 2021 at 06:32 PM
 -- Server version: 8.0.27
 -- PHP Version: 7.4.20
 
@@ -1194,11 +1194,18 @@ CREATE TABLE `ps_admin_filter` (
   `id` int NOT NULL,
   `employee` int NOT NULL,
   `shop` int NOT NULL,
-  `controller` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `action` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `filter` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `filter_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
+  `controller` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `action` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `filter` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `filter_id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `ps_admin_filter`
+--
+
+INSERT INTO `ps_admin_filter` (`id`, `employee`, `shop`, `controller`, `action`, `filter`, `filter_id`) VALUES
+(1, 1, 1, 'ProductController', 'catalogAction', '{\"filter_category\":\"\",\"filter_column_id_product\":\"\",\"filter_column_name\":\"\",\"filter_column_reference\":\"\",\"filter_column_name_category\":\"\",\"filter_column_price\":\"\",\"filter_column_sav_quantity\":\"\",\"filter_column_active\":\"\",\"last_offset\":\"0\",\"last_limit\":\"20\",\"last_orderBy\":\"id_product\",\"last_sortOrder\":\"desc\"}', '');
 
 -- --------------------------------------------------------
 
@@ -1289,7 +1296,7 @@ CREATE TABLE `ps_attachment_lang` (
 CREATE TABLE `ps_attribute` (
   `id_attribute` int NOT NULL,
   `id_attribute_group` int NOT NULL,
-  `color` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `color` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `position` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -1333,7 +1340,7 @@ INSERT INTO `ps_attribute` (`id_attribute`, `id_attribute_group`, `color`, `posi
 CREATE TABLE `ps_attribute_group` (
   `id_attribute_group` int NOT NULL,
   `is_color_group` tinyint(1) NOT NULL,
-  `group_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `group_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `position` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -1356,8 +1363,8 @@ INSERT INTO `ps_attribute_group` (`id_attribute_group`, `is_color_group`, `group
 CREATE TABLE `ps_attribute_group_lang` (
   `id_attribute_group` int NOT NULL,
   `id_lang` int NOT NULL,
-  `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `public_name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL
+  `name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `public_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1414,7 +1421,7 @@ CREATE TABLE `ps_attribute_impact` (
 CREATE TABLE `ps_attribute_lang` (
   `id_attribute` int NOT NULL,
   `id_lang` int NOT NULL,
-  `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL
+  `name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -3404,6 +3411,7 @@ INSERT INTO `ps_category_product` (`id_category`, `id_product`, `position`) VALU
 (2, 18, 18),
 (2, 19, 19),
 (2, 20, 20),
+(2, 21, 21),
 (3, 1, 1),
 (3, 2, 2),
 (4, 1, 1),
@@ -3676,11 +3684,11 @@ INSERT INTO `ps_condition` (`id_condition`, `id_ps_condition`, `type`, `request`
 (8, 8, 'sql', 'SELECT COUNT(*) FROM PREFIX_carrier WHERE name NOT IN (\"0\", \"My carrier\")', '>', '0', '2', 'hook', 'actionObjectCarrierAddAfter', 1, '2021-11-04 16:24:21', '2021-11-04 16:24:26'),
 (9, 9, 'sql', 'SELECT COUNT(*) FROM PREFIX_carrier WHERE name NOT IN (\"0\", \"My carrier\")', '>', '1', '2', 'hook', 'actionObjectCarrierAddAfter', 1, '2021-11-04 16:24:21', '2021-11-04 16:24:27'),
 (10, 10, 'sql', 'SELECT COUNT(*) FROM PREFIX_product WHERE reference NOT LIKE \"demo_%\"', '>', '0', '1', 'hook', 'actionObjectProductAddAfter', 1, '2021-11-04 16:24:21', '2021-11-04 16:24:30'),
-(11, 11, 'sql', 'SELECT COUNT(*) FROM PREFIX_product WHERE reference NOT LIKE \"demo_%\"', '>', '9', '1', 'hook', 'actionObjectProductAddAfter', 0, '2021-11-04 16:24:21', '2021-11-04 16:24:35'),
-(12, 12, 'sql', 'SELECT COUNT(*) FROM PREFIX_product WHERE reference NOT LIKE \"demo_%\"', '>', '99', '1', 'hook', 'actionObjectProductAddAfter', 0, '2021-11-04 16:24:21', '2021-11-04 16:24:35'),
-(13, 13, 'sql', 'SELECT COUNT(*) FROM PREFIX_product WHERE reference NOT LIKE \"demo_%\"', '>', '999', '1', 'hook', 'actionObjectProductAddAfter', 0, '2021-11-04 16:24:21', '2021-11-04 16:24:35'),
-(14, 14, 'sql', 'SELECT COUNT(*) FROM PREFIX_product WHERE reference NOT LIKE \"demo_%\"', '>', '9999', '1', 'hook', 'actionObjectProductAddAfter', 0, '2021-11-04 16:24:21', '2021-11-04 16:24:35'),
-(15, 15, 'sql', 'SELECT COUNT(*) FROM PREFIX_product WHERE reference NOT LIKE \"demo_%\"', '>', '99999', '1', 'hook', 'actionObjectProductAddAfter', 0, '2021-11-04 16:24:21', '2021-11-04 16:24:35'),
+(11, 11, 'sql', 'SELECT COUNT(*) FROM PREFIX_product WHERE reference NOT LIKE \"demo_%\"', '>', '9', '2', 'hook', 'actionObjectProductAddAfter', 0, '2021-11-04 16:24:21', '2021-11-04 19:28:27'),
+(12, 12, 'sql', 'SELECT COUNT(*) FROM PREFIX_product WHERE reference NOT LIKE \"demo_%\"', '>', '99', '2', 'hook', 'actionObjectProductAddAfter', 0, '2021-11-04 16:24:21', '2021-11-04 19:28:27'),
+(13, 13, 'sql', 'SELECT COUNT(*) FROM PREFIX_product WHERE reference NOT LIKE \"demo_%\"', '>', '999', '2', 'hook', 'actionObjectProductAddAfter', 0, '2021-11-04 16:24:21', '2021-11-04 19:28:27'),
+(14, 14, 'sql', 'SELECT COUNT(*) FROM PREFIX_product WHERE reference NOT LIKE \"demo_%\"', '>', '9999', '2', 'hook', 'actionObjectProductAddAfter', 0, '2021-11-04 16:24:21', '2021-11-04 19:28:27'),
+(15, 15, 'sql', 'SELECT COUNT(*) FROM PREFIX_product WHERE reference NOT LIKE \"demo_%\"', '>', '99999', '2', 'hook', 'actionObjectProductAddAfter', 0, '2021-11-04 16:24:21', '2021-11-04 19:28:27'),
 (16, 16, 'configuration', 'PS_SHOP_PHONE', '!=', '0', '', 'hook', 'actionAdminStoresControllerUpdate_optionsAfter', 0, '2021-11-04 16:24:21', '2021-11-04 16:24:26'),
 (17, 17, 'sql', 'SELECT COUNT(*) FROM PREFIX_contact', '>', '2', '2', 'hook', 'actionObjectContactAddAfter', 0, '2021-11-04 16:24:21', '2021-11-04 16:24:27'),
 (18, 18, 'sql', 'SELECT COUNT(*) FROM PREFIX_contact', '>', '4', '2', 'hook', 'actionObjectContactAddAfter', 0, '2021-11-04 16:24:21', '2021-11-04 16:24:27'),
@@ -3749,9 +3757,9 @@ INSERT INTO `ps_condition` (`id_condition`, `id_ps_condition`, `type`, `request`
 (81, 93, 'sql', 'SELECT COUNT(*) FROM PREFIX_employee', '>=', '10', '1', 'hook', 'actionObjectEmployeeAddAfter', 0, '2021-11-04 16:24:22', '2021-11-04 16:24:28'),
 (82, 94, 'sql', 'SELECT COUNT(*) FROM PREFIX_employee', '>=', '20', '1', 'hook', 'actionObjectEmployeeAddAfter', 0, '2021-11-04 16:24:22', '2021-11-04 16:24:28'),
 (83, 95, 'sql', 'SELECT COUNT(*) FROM PREFIX_employee', '>=', '40', '1', 'hook', 'actionObjectEmployeeAddAfter', 0, '2021-11-04 16:24:22', '2021-11-04 16:24:28'),
-(84, 96, 'sql', 'SELECT id_image FROM PREFIX_image WHERE id_image > 26', '>', '0', '0', 'hook', 'actionObjectImageAddAfter', 0, '2021-11-04 16:24:22', '2021-11-04 16:24:26'),
-(85, 97, 'sql', 'SELECT COUNT(*) FROM PREFIX_image', '>=', '50', '23', 'hook', 'actionObjectImageAddAfter', 0, '2021-11-04 16:24:22', '2021-11-04 16:24:27'),
-(86, 98, 'sql', 'SELECT COUNT(*) FROM PREFIX_image', '>=', '100', '23', 'hook', 'actionObjectImageAddAfter', 0, '2021-11-04 16:24:22', '2021-11-04 16:24:27'),
+(84, 96, 'sql', 'SELECT id_image FROM PREFIX_image WHERE id_image > 26', '>', '0', '0', 'hook', 'actionObjectImageAddAfter', 0, '2021-11-04 16:24:22', '2021-11-04 19:29:03'),
+(85, 97, 'sql', 'SELECT COUNT(*) FROM PREFIX_image', '>=', '50', '24', 'hook', 'actionObjectImageAddAfter', 0, '2021-11-04 16:24:22', '2021-11-04 19:29:03'),
+(86, 98, 'sql', 'SELECT COUNT(*) FROM PREFIX_image', '>=', '100', '24', 'hook', 'actionObjectImageAddAfter', 0, '2021-11-04 16:24:22', '2021-11-04 19:29:03'),
 (87, 99, 'sql', 'SELECT COUNT(*) FROM PREFIX_image', '>=', '1000', '23', 'time', '2', 0, '2021-11-04 16:24:22', '2021-11-04 16:24:28'),
 (88, 100, 'sql', 'SELECT COUNT(*) FROM PREFIX_image', '>=', '10000', '23', 'time', '4', 0, '2021-11-04 16:24:22', '2021-11-04 16:24:28'),
 (89, 101, 'sql', 'SELECT COUNT(*) FROM PREFIX_image', '>=', '50000', '23', 'time', '8', 0, '2021-11-04 16:24:22', '2021-11-04 16:24:28'),
@@ -3798,7 +3806,7 @@ INSERT INTO `ps_condition` (`id_condition`, `id_ps_condition`, `type`, `request`
 (130, 376, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%shopgate%\" AND os.logable = 1 AND o.date_add > DATE_SUB(NOW(), INTERVAL 90 DAY)', '>=', '30', '0', 'time', '1', 0, '2021-11-04 16:24:22', '2021-11-04 16:24:28'),
 (131, 377, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%moneybookers%\" AND os.logable = 1 AND o.date_add > DATE_SUB(NOW(), INTERVAL 90 DAY)', '>=', '1', '0', 'time', '1', 0, '2021-11-04 16:24:22', '2021-11-04 16:24:27'),
 (132, 394, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%sofortbanking%\" AND os.logable = 1 AND o.date_add > DATE_SUB(NOW(), INTERVAL 90 DAY)', '>=', '30', '0', 'time', '1', 0, '2021-11-04 16:24:22', '2021-11-04 16:24:28'),
-(133, 399, 'sql', 'SELECT COUNT(*) FROM PREFIX_product WHERE reference NOT LIKE \"demo_%\"', '>', '499', '1', 'hook', 'actionObjectProductAddAfter', 0, '2021-11-04 16:24:22', '2021-11-04 16:24:30'),
+(133, 399, 'sql', 'SELECT COUNT(*) FROM PREFIX_product WHERE reference NOT LIKE \"demo_%\"', '>', '499', '2', 'hook', 'actionObjectProductAddAfter', 0, '2021-11-04 16:24:22', '2021-11-04 19:28:27'),
 (134, 424, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like \"%alliance3%\"', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2021-11-04 16:24:22', '2021-11-04 16:24:26'),
 (135, 425, 'sql', 'SELECT COUNT(*) FROM PREFIX_configuration WHERE (( name LIKE \'ALLIANCE3_CONFIGURATION_OK\') AND ( value = \'1\')) OR (( name LIKE \'ALLIANCE_DEMO\') AND ( value = \'0\'))', '==', '2', '0', 'time', '1', 0, '2021-11-04 16:24:22', '2021-11-04 16:24:27'),
 (136, 426, 'sql', 'SELECT COUNT(*) FROM PREFIX_orders o LEFT JOIN PREFIX_order_state os ON os.id_order_state = o.current_state WHERE o.module like \"%alliance3%\" AND os.logable = 1', '>=', '1', '0', 'time', '2', 0, '2021-11-04 16:24:22', '2021-11-04 16:24:27'),
@@ -4345,7 +4353,7 @@ INSERT INTO `ps_configuration` (`id_configuration`, `id_shop_group`, `id_shop`, 
 (145, NULL, NULL, 'PS_VIRTUAL_PROD_FEATURE_ACTIVE', '1', '0000-00-00 00:00:00', '2021-11-04 16:22:09'),
 (146, NULL, NULL, 'PS_CUSTOMIZATION_FEATURE_ACTIVE', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (147, NULL, NULL, 'PS_CART_RULE_FEATURE_ACTIVE', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(148, NULL, NULL, 'PS_PACK_FEATURE_ACTIVE', '1', '0000-00-00 00:00:00', '2021-11-04 16:22:10'),
+(148, NULL, NULL, 'PS_PACK_FEATURE_ACTIVE', '1', '0000-00-00 00:00:00', '2021-11-04 19:30:47'),
 (149, NULL, NULL, 'PS_ALIAS_FEATURE_ACTIVE', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (150, NULL, NULL, 'PS_TAX_ADDRESS_TYPE', 'id_address_delivery', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (151, NULL, NULL, 'PS_SHOP_DEFAULT', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
@@ -4721,7 +4729,9 @@ CREATE TABLE `ps_connections` (
 
 INSERT INTO `ps_connections` (`id_connections`, `id_shop_group`, `id_shop`, `id_guest`, `id_page`, `ip_address`, `date_add`, `http_referer`) VALUES
 (1, 1, 1, 1, 1, 2130706433, '2021-11-04 16:22:09', 'https://www.prestashop.com'),
-(2, 1, 1, 3, 1, 2886860801, '2021-11-04 16:24:07', 'http://localhost:8080/install/index.php');
+(2, 1, 1, 3, 1, 2886860801, '2021-11-04 16:24:07', 'http://localhost:8080/install/index.php'),
+(3, 1, 1, 4, 1, 2887188481, '2021-11-04 18:02:54', ''),
+(4, 1, 1, 4, 1, 2887188481, '2021-11-04 19:27:53', '');
 
 -- --------------------------------------------------------
 
@@ -4756,7 +4766,9 @@ CREATE TABLE `ps_connections_source` (
 --
 
 INSERT INTO `ps_connections_source` (`id_connections_source`, `id_connections`, `http_referer`, `request_uri`, `keywords`, `date_add`) VALUES
-(1, 2, 'http://localhost:8080/install/index.php', 'localhost:8080/index.php', '', '2021-11-04 16:24:07');
+(1, 2, 'http://localhost:8080/install/index.php', 'localhost:8080/index.php', '', '2021-11-04 16:24:07'),
+(2, 4, 'http://localhost:8080/index.php', 'localhost:8080/index.php?controller=new-products', '', '2021-11-04 19:30:55'),
+(3, 4, 'http://localhost:8080/index.php?controller=new-products', 'localhost:8080/index.php?id_product=21&rewrite=octopus&controller=product', '', '2021-11-04 19:31:06');
 
 -- --------------------------------------------------------
 
@@ -6003,6 +6015,13 @@ CREATE TABLE `ps_employee_session` (
   `token` varchar(40) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Dumping data for table `ps_employee_session`
+--
+
+INSERT INTO `ps_employee_session` (`id_employee_session`, `id_employee`, `token`) VALUES
+(3, 1, '5cbb6f9c9d5f4fb29919e5d888292e7cf7eada75');
+
 -- --------------------------------------------------------
 
 --
@@ -6064,12 +6083,12 @@ INSERT INTO `ps_feature` (`id_feature`, `position`) VALUES
 
 CREATE TABLE `ps_feature_flag` (
   `id_feature_flag` int UNSIGNED NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `state` tinyint(1) NOT NULL DEFAULT '0',
-  `label_wording` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `label_domain` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `description_wording` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `description_domain` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT ''
+  `label_wording` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `label_domain` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `description_wording` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `description_domain` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -6125,6 +6144,7 @@ INSERT INTO `ps_feature_product` (`id_feature`, `id_product`, `id_feature_value`
 (1, 19, 3),
 (1, 1, 4),
 (1, 2, 4),
+(1, 21, 4),
 (1, 16, 5),
 (1, 17, 5),
 (1, 18, 5),
@@ -6138,7 +6158,8 @@ INSERT INTO `ps_feature_product` (`id_feature`, `id_product`, `id_feature_value`
 (2, 11, 9),
 (2, 16, 10),
 (2, 17, 10),
-(2, 18, 10);
+(2, 18, 10),
+(2, 21, 13);
 
 -- --------------------------------------------------------
 
@@ -6185,7 +6206,8 @@ INSERT INTO `ps_feature_value` (`id_feature_value`, `id_feature`, `custom`) VALU
 (7, 2, 0),
 (8, 2, 0),
 (9, 2, 0),
-(10, 2, 0);
+(10, 2, 0),
+(13, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -6213,7 +6235,8 @@ INSERT INTO `ps_feature_value_lang` (`id_feature_value`, `id_lang`, `value`) VAL
 (7, 1, 'Long sleeves'),
 (8, 1, 'Short sleeves'),
 (9, 1, 'Removable cover'),
-(10, 1, '120 pages');
+(10, 1, '120 pages'),
+(13, 1, 'Miękka');
 
 -- --------------------------------------------------------
 
@@ -6375,7 +6398,8 @@ CREATE TABLE `ps_guest` (
 INSERT INTO `ps_guest` (`id_guest`, `id_operating_system`, `id_web_browser`, `id_customer`, `javascript`, `screen_resolution_x`, `screen_resolution_y`, `screen_color`, `sun_java`, `adobe_flash`, `adobe_director`, `apple_quicktime`, `real_player`, `windows_media`, `accept_language`, `mobile_theme`) VALUES
 (1, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0),
 (2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0),
-(3, 6, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'en', 0);
+(3, 6, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'en', 0),
+(4, 6, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'en', 0);
 
 -- --------------------------------------------------------
 
@@ -7626,7 +7650,8 @@ INSERT INTO `ps_image` (`id_image`, `id_product`, `position`, `cover`) VALUES
 (20, 18, 1, 1),
 (21, 2, 1, 1),
 (22, 19, 1, 1),
-(23, 15, 1, 1);
+(23, 15, 1, 1),
+(24, 21, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -7667,7 +7692,8 @@ INSERT INTO `ps_image_lang` (`id_image`, `id_lang`, `legend`) VALUES
 (20, 1, 'Mountain fox notebook'),
 (21, 1, 'Brown bear printed sweater'),
 (22, 1, 'Customizable mug'),
-(23, 1, 'Pack Mug + Framed poster');
+(23, 1, 'Pack Mug + Framed poster'),
+(24, 1, '');
 
 -- --------------------------------------------------------
 
@@ -7709,7 +7735,8 @@ INSERT INTO `ps_image_shop` (`id_product`, `id_image`, `id_shop`, `cover`) VALUE
 (16, 18, 1, 1),
 (17, 19, 1, 1),
 (18, 20, 1, 1),
-(19, 22, 1, 1);
+(19, 22, 1, 1),
+(21, 24, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -7818,13 +7845,13 @@ INSERT INTO `ps_info_shop` (`id_info`, `id_shop`) VALUES
 
 CREATE TABLE `ps_lang` (
   `id_lang` int NOT NULL,
-  `name` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `active` tinyint(1) NOT NULL,
-  `iso_code` varchar(2) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `language_code` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `locale` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `date_format_lite` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `date_format_full` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `iso_code` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `language_code` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `locale` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date_format_lite` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date_format_full` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `is_rtl` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -8153,7 +8180,8 @@ INSERT INTO `ps_layered_price_index` (`id_product`, `id_currency`, `id_shop`, `p
 (17, 1, 1, '15.86700', '15.86700', 14),
 (18, 1, 1, '15.86700', '15.86700', 14),
 (19, 1, 1, '17.09700', '17.09700', 14),
-(20, 1, 1, '0.00000', '0.00000', 14);
+(20, 1, 1, '0.00000', '0.00000', 14),
+(21, 1, 1, '61.50000', '61.50000', 14);
 
 -- --------------------------------------------------------
 
@@ -8545,7 +8573,12 @@ INSERT INTO `ps_log` (`id_log`, `severity`, `error_code`, `message`, `object_typ
 (217, 1, 0, 'Module blockreassurance has no vendor folder', '', 0, 1, NULL, 1, 0, 1, '2021-11-04 16:21:54', '2021-11-04 16:21:54'),
 (218, 1, 0, 'Protect vendor folder in module ps_facetedsearch', '', 0, 1, NULL, 1, 0, 1, '2021-11-04 16:22:16', '2021-11-04 16:22:16'),
 (219, 1, 0, 'Module ps_facetedsearch has no vendor folder', '', 0, 1, NULL, 1, 0, 1, '2021-11-04 16:22:16', '2021-11-04 16:22:16'),
-(220, 1, 0, 'Połączenie z panelem administracyjnym z 172.18.0.1', '', 0, NULL, NULL, 1, 1, 1, '2021-11-04 16:24:19', '2021-11-04 16:24:19');
+(220, 1, 0, 'Połączenie z panelem administracyjnym z 172.18.0.1', '', 0, NULL, NULL, 1, 1, 1, '2021-11-04 16:24:19', '2021-11-04 16:24:19'),
+(221, 1, 0, 'Połączenie z panelem administracyjnym z 172.23.0.1', '', 0, NULL, NULL, 1, 1, 1, '2021-11-04 18:03:07', '2021-11-04 18:03:07'),
+(222, 1, 0, 'Połączenie z panelem administracyjnym z 172.23.0.1', '', 0, NULL, NULL, 1, 1, 1, '2021-11-04 19:28:11', '2021-11-04 19:28:11'),
+(223, 1, 0, 'Product modification', 'Product', 21, 1, NULL, 1, 0, 1, '2021-11-04 19:30:42', '2021-11-04 19:30:42'),
+(224, 1, 0, 'Product modification', 'Product', 21, 1, NULL, 1, 0, 1, '2021-11-04 19:30:44', '2021-11-04 19:30:44'),
+(225, 1, 0, 'Product modification', 'Product', 21, 1, NULL, 1, 0, 1, '2021-11-04 19:30:47', '2021-11-04 19:30:47');
 
 -- --------------------------------------------------------
 
@@ -10231,7 +10264,8 @@ INSERT INTO `ps_product` (`id_product`, `id_supplier`, `id_manufacturer`, `id_ca
 (17, 2, 2, 7, 1, 1, 0, 0, '', '', '', '', '0.000000', 0, 1, NULL, 0, '12.900000', '0.000000', '', '0.000000', '0.000000', 'demo_9', '', '', '0.000000', '0.000000', '0.000000', '0.300000', 2, 1, 0, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 32, '2021-11-04 16:22:09', '2021-11-04 16:22:09', 0, 3, 1, 'combinations'),
 (18, 2, 2, 7, 1, 1, 0, 0, '', '', '', '', '0.000000', 0, 1, NULL, 0, '12.900000', '0.000000', '', '0.000000', '0.000000', 'demo_10', '', '', '0.000000', '0.000000', '0.000000', '0.300000', 2, 1, 0, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 36, '2021-11-04 16:22:09', '2021-11-04 16:22:09', 0, 3, 1, 'combinations'),
 (19, 2, 1, 8, 1, 1, 0, 0, '', '', '', '', '0.000000', 0, 1, NULL, 0, '13.900000', '0.000000', '', '0.000000', '0.000000', 'demo_14', '', '', '0.000000', '0.000000', '0.000000', '0.300000', 2, 1, 0, 1, 0, 1, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 0, '2021-11-04 16:22:09', '2021-11-04 16:22:09', 0, 3, 1, 'standard'),
-(20, 0, 0, 2, 1, 1, 0, 0, '', '', '', '', '0.000000', 0, 1, NULL, 0, '0.000000', '0.000000', '', '0.000000', '0.000000', '', '', '', '0.000000', '0.000000', '0.000000', '0.000000', 2, 1, 0, 0, 0, 0, 0, '404', 0, 1, '0000-00-00', 0, 'new', 1, 0, 'both', 0, 0, 0, 0, '2021-11-04 16:24:30', '2021-11-04 16:24:30', 0, 3, 0, '');
+(20, 0, 0, 2, 1, 1, 0, 0, '', '', '', '', '0.000000', 0, 1, NULL, 0, '0.000000', '0.000000', '', '0.000000', '0.000000', '', '', '', '0.000000', '0.000000', '0.000000', '0.000000', 2, 1, 0, 0, 0, 0, 0, '404', 0, 1, '0000-00-00', 0, 'new', 1, 0, 'both', 0, 0, 0, 0, '2021-11-04 16:24:30', '2021-11-04 16:24:30', 0, 3, 0, ''),
+(21, 0, 2, 2, 1, 1, 0, 0, '', '', '', '', '0.000000', 0, 1, NULL, 0, '50.000000', '0.000000', '', '0.000000', '30.000000', 'O90', '', '', '200.000000', '222.000000', '2222.000000', '12.000000', 2, 1, 0, 0, 0, 0, 1, '404', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 0, '2021-11-04 19:28:27', '2021-11-04 19:30:47', 0, 3, 1, '');
 
 -- --------------------------------------------------------
 
@@ -10722,7 +10756,8 @@ INSERT INTO `ps_product_lang` (`id_product`, `id_shop`, `id_lang`, `description`
 (17, 1, 1, '<p>The Mountain fox notebook is the best option to write down your most ingenious ideas. At work, at home or when traveling, its endearing design and manufacturing quality will make you feel like writing! 90 gsm paper / double spiral binding.</p>', '<p>120 sheets notebook with hard cover made of recycled cardboard. 16x22cm</p>', 'brown-bear-notebook', '', '', '', 'Brown bear notebook', '', '', '', ''),
 (18, 1, 1, '<p>The Mountain fox notebook is the best option to write down your most ingenious ideas. At work, at home or when traveling, its endearing design and manufacturing quality will make you feel like writing! 90 gsm paper / double spiral binding.</p>', '<p>120 sheets notebook with hard cover made of recycled cardboard. 16x22cm</p>', 'hummingbird-notebook', '', '', '', 'Hummingbird notebook', '', '', '', ''),
 (19, 1, 1, '<p>Customize your mug with the text of your choice. A mood, a message, a quote... It\'s up to you! Maximum number of characters: ---</p>', '<p>White Ceramic Mug. 325ml</p>', 'customizable-mug', '', '', '', 'Customizable mug', '', '', '', ''),
-(20, 1, 1, '', '', '', '', '', '', '', '', '', '', '');
+(20, 1, 1, '', '', '', '', '', '', '', '', '', '', ''),
+(21, 1, 1, '<p>Ośmiorniczka dla dzieci. Wywracana na drugą stronę.</p>', '<p>Ośmiorniczka</p>', 'octopus', '', '', '', 'Octopus', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -10803,7 +10838,8 @@ INSERT INTO `ps_product_shop` (`id_product`, `id_shop`, `id_category_default`, `
 (17, 1, 7, 1, 0, 0, '0.000000', 1, NULL, 0, '12.900000', '0.000000', '', '0.000000', '0.000000', 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 32, 0, '2021-11-04 16:22:09', '2021-11-04 16:22:09', 3),
 (18, 1, 7, 1, 0, 0, '0.000000', 1, NULL, 0, '12.900000', '0.000000', '', '0.000000', '0.000000', 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 36, 0, '2021-11-04 16:22:09', '2021-11-04 16:22:09', 3),
 (19, 1, 8, 1, 0, 0, '0.000000', 1, NULL, 0, '13.900000', '0.000000', '', '0.000000', '0.000000', 1, 0, 1, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, '2021-11-04 16:22:09', '2021-11-04 16:22:09', 3),
-(20, 1, 2, 1, 0, 0, '0.000000', 1, NULL, 0, '0.000000', '0.000000', '', '0.000000', '0.000000', 0, 0, 0, 0, '404', 0, 1, '0000-00-00', 0, 'new', 1, 0, 'both', 0, 0, '2021-11-04 16:24:30', '2021-11-04 16:24:30', 3);
+(20, 1, 2, 1, 0, 0, '0.000000', 1, NULL, 0, '0.000000', '0.000000', '', '0.000000', '0.000000', 0, 0, 0, 0, '404', 0, 1, '0000-00-00', 0, 'new', 1, 0, 'both', 0, 0, '2021-11-04 16:24:30', '2021-11-04 16:24:30', 3),
+(21, 1, 2, 1, 0, 0, '0.000000', 1, NULL, 0, '50.000000', '0.000000', '', '0.000000', '30.000000', 0, 0, 0, 1, '404', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, '2021-11-04 19:28:27', '2021-11-04 19:30:47', 3);
 
 -- --------------------------------------------------------
 
@@ -12093,7 +12129,20 @@ INSERT INTO `ps_search_index` (`id_product`, `id_word`, `weight`) VALUES
 (19, 271, 3),
 (19, 747, 6),
 (19, 253, 8),
-(19, 6, 10);
+(19, 6, 10),
+(21, 761, 1),
+(21, 762, 1),
+(21, 763, 1),
+(21, 764, 1),
+(21, 760, 2),
+(21, 769, 2),
+(21, 770, 2),
+(21, 141, 3),
+(21, 142, 3),
+(21, 765, 3),
+(21, 766, 3),
+(21, 758, 6),
+(21, 759, 10);
 
 -- --------------------------------------------------------
 
@@ -12135,6 +12184,7 @@ INSERT INTO `ps_search_word` (`id_word`, `id_shop`, `id_lang`, `word`) VALUES
 (140, 1, 1, 'art'),
 (356, 1, 1, 'atmosphere'),
 (348, 1, 1, 'back'),
+(769, 1, 1, 'bawelna'),
 (384, 1, 1, 'bear'),
 (352, 1, 1, 'bed'),
 (153, 1, 1, 'begins'),
@@ -12183,6 +12233,8 @@ INSERT INTO `ps_search_word` (`id_word`, `id_shop`, `id_lang`, `word`) VALUES
 (616, 1, 1, 'double'),
 (600, 1, 1, 'down'),
 (470, 1, 1, 'download'),
+(763, 1, 1, 'druga'),
+(761, 1, 1, 'dzieci'),
 (608, 1, 1, 'endearing'),
 (24, 1, 1, 'evokes'),
 (49, 1, 1, 'exceptional'),
@@ -12198,6 +12250,7 @@ INSERT INTO `ps_search_word` (`id_word`, `id_shop`, `id_lang`, `word`) VALUES
 (131, 1, 1, 'frame'),
 (108, 1, 1, 'framed'),
 (115, 1, 1, 'give'),
+(766, 1, 1, 'glowna'),
 (203, 1, 1, 'good'),
 (141, 1, 1, 'graphic'),
 (467, 1, 1, 'graphics'),
@@ -12234,6 +12287,7 @@ INSERT INTO `ps_search_word` (`id_word`, `id_shop`, `id_lang`, `word`) VALUES
 (753, 1, 1, 'maximum'),
 (54, 1, 1, 'men'),
 (751, 1, 1, 'message'),
+(770, 1, 1, 'miekka'),
 (354, 1, 1, 'modern'),
 (313, 1, 1, 'mood'),
 (134, 1, 1, 'more'),
@@ -12247,6 +12301,8 @@ INSERT INTO `ps_search_word` (`id_word`, `id_shop`, `id_lang`, `word`) VALUES
 (476, 1, 1, 'noncommercial'),
 (591, 1, 1, 'notebook'),
 (754, 1, 1, 'number'),
+(759, 1, 1, 'o90'),
+(758, 1, 1, 'octopus'),
 (257, 1, 1, 'off'),
 (128, 1, 1, 'office'),
 (126, 1, 1, 'open'),
@@ -12255,6 +12311,7 @@ INSERT INTO `ps_search_word` (`id_word`, `id_shop`, `id_lang`, `word`) VALUES
 (121, 1, 1, 'optimistic'),
 (598, 1, 1, 'option'),
 (40, 1, 1, 'origamis'),
+(760, 1, 1, 'osmiorniczka'),
 (285, 1, 1, 'out'),
 (53, 1, 1, 'overtime'),
 (577, 1, 1, 'pack'),
@@ -12308,6 +12365,8 @@ INSERT INTO `ps_search_word` (`id_word`, `id_shop`, `id_lang`, `word`) VALUES
 (16, 1, 1, 'staple'),
 (256, 1, 1, 'start'),
 (619, 1, 1, 'stationery'),
+(765, 1, 1, 'strona'),
+(764, 1, 1, 'strone'),
 (27, 1, 1, 'studio'),
 (44, 1, 1, 'sublimation'),
 (488, 1, 1, 'support'),
@@ -12344,6 +12403,7 @@ INSERT INTO `ps_search_word` (`id_word`, `id_shop`, `id_lang`, `word`) VALUES
 (604, 1, 1, 'work'),
 (599, 1, 1, 'write'),
 (614, 1, 1, 'writing'),
+(762, 1, 1, 'wywracana'),
 (106, 1, 1, 'yet'),
 (478, 1, 1, 'you'),
 (116, 1, 1, 'your'),
@@ -12359,10 +12419,10 @@ INSERT INTO `ps_search_word` (`id_word`, `id_shop`, `id_lang`, `word`) VALUES
 CREATE TABLE `ps_shop` (
   `id_shop` int NOT NULL,
   `id_shop_group` int NOT NULL,
-  `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `color` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `color` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `id_category` int NOT NULL,
-  `theme_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `theme_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `active` tinyint(1) NOT NULL,
   `deleted` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -12382,8 +12442,8 @@ INSERT INTO `ps_shop` (`id_shop`, `id_shop_group`, `name`, `color`, `id_category
 
 CREATE TABLE `ps_shop_group` (
   `id_shop_group` int NOT NULL,
-  `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `color` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `color` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `share_customer` tinyint(1) NOT NULL,
   `share_order` tinyint(1) NOT NULL,
   `share_stock` tinyint(1) NOT NULL,
@@ -12507,6 +12567,13 @@ CREATE TABLE `ps_specific_price_priority` (
   `id_product` int NOT NULL,
   `priority` varchar(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `ps_specific_price_priority`
+--
+
+INSERT INTO `ps_specific_price_priority` (`id_specific_price_priority`, `id_product`, `priority`) VALUES
+(1, 21, 'id_shop;id_currency;id_country;id_group');
 
 -- --------------------------------------------------------
 
@@ -13047,7 +13114,8 @@ INSERT INTO `ps_stock_available` (`id_stock_available`, `id_product`, `id_produc
 (56, 18, 37, 1, 0, 300, 0, 0, 0, 2, ''),
 (57, 18, 38, 1, 0, 300, 0, 0, 0, 2, ''),
 (58, 18, 39, 1, 0, 300, 0, 0, 0, 2, ''),
-(59, 20, 0, 1, 0, 0, 0, 0, 0, 2, '');
+(59, 20, 0, 1, 0, 0, 0, 0, 0, 2, ''),
+(60, 21, 0, 1, 0, 200, 0, 0, 0, 1, '');
 
 -- --------------------------------------------------------
 
@@ -13062,8 +13130,8 @@ CREATE TABLE `ps_stock_mvt` (
   `id_supply_order` int DEFAULT NULL,
   `id_stock_mvt_reason` int NOT NULL,
   `id_employee` int NOT NULL,
-  `employee_lastname` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `employee_firstname` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `employee_lastname` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `employee_firstname` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `physical_quantity` int NOT NULL,
   `date_add` datetime NOT NULL,
   `sign` smallint NOT NULL DEFAULT '1',
@@ -13072,6 +13140,13 @@ CREATE TABLE `ps_stock_mvt` (
   `current_wa` decimal(20,6) DEFAULT '0.000000',
   `referer` bigint DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `ps_stock_mvt`
+--
+
+INSERT INTO `ps_stock_mvt` (`id_stock_mvt`, `id_stock`, `id_order`, `id_supply_order`, `id_stock_mvt_reason`, `id_employee`, `employee_lastname`, `employee_firstname`, `physical_quantity`, `date_add`, `sign`, `price_te`, `last_wa`, `current_wa`, `referer`) VALUES
+(1, 60, NULL, NULL, 11, 1, 'Admin', 'Admin', 200, '2021-11-04 19:30:43', 1, '0.000000', '0.000000', '0.000000', NULL);
 
 -- --------------------------------------------------------
 
@@ -13438,15 +13513,15 @@ CREATE TABLE `ps_tab` (
   `id_tab` int NOT NULL,
   `id_parent` int NOT NULL,
   `position` int NOT NULL,
-  `module` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `class_name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `route_name` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `module` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `class_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `route_name` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `active` tinyint(1) NOT NULL,
   `enabled` tinyint(1) NOT NULL,
   `hide_host_mode` tinyint(1) NOT NULL,
-  `icon` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `wording` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `wording_domain` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `icon` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `wording` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `wording_domain` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -13628,7 +13703,7 @@ CREATE TABLE `ps_tab_advice` (
 CREATE TABLE `ps_tab_lang` (
   `id_tab` int NOT NULL,
   `id_lang` int NOT NULL,
-  `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL
+  `name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -14721,9 +14796,9 @@ CREATE TABLE `ps_translation` (
   `id_translation` int NOT NULL,
   `id_lang` int NOT NULL,
   `key` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `translation` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `domain` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `theme` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `translation` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `domain` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `theme` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -16953,7 +17028,7 @@ ALTER TABLE `ps_address`
 -- AUTO_INCREMENT for table `ps_admin_filter`
 --
 ALTER TABLE `ps_admin_filter`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ps_advice`
@@ -17097,13 +17172,13 @@ ALTER TABLE `ps_configuration_kpi`
 -- AUTO_INCREMENT for table `ps_connections`
 --
 ALTER TABLE `ps_connections`
-  MODIFY `id_connections` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_connections` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `ps_connections_source`
 --
 ALTER TABLE `ps_connections_source`
-  MODIFY `id_connections_source` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_connections_source` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `ps_contact`
@@ -17187,7 +17262,7 @@ ALTER TABLE `ps_employee`
 -- AUTO_INCREMENT for table `ps_employee_session`
 --
 ALTER TABLE `ps_employee_session`
-  MODIFY `id_employee_session` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_employee_session` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `ps_feature`
@@ -17205,7 +17280,7 @@ ALTER TABLE `ps_feature_flag`
 -- AUTO_INCREMENT for table `ps_feature_value`
 --
 ALTER TABLE `ps_feature_value`
-  MODIFY `id_feature_value` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_feature_value` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `ps_gender`
@@ -17229,7 +17304,7 @@ ALTER TABLE `ps_group_reduction`
 -- AUTO_INCREMENT for table `ps_guest`
 --
 ALTER TABLE `ps_guest`
-  MODIFY `id_guest` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_guest` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `ps_homeslider`
@@ -17265,7 +17340,7 @@ ALTER TABLE `ps_hook_module_exceptions`
 -- AUTO_INCREMENT for table `ps_image`
 --
 ALTER TABLE `ps_image`
-  MODIFY `id_image` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_image` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `ps_image_type`
@@ -17325,7 +17400,7 @@ ALTER TABLE `ps_link_block_shop`
 -- AUTO_INCREMENT for table `ps_log`
 --
 ALTER TABLE `ps_log`
-  MODIFY `id_log` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=221;
+  MODIFY `id_log` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=226;
 
 --
 -- AUTO_INCREMENT for table `ps_mail`
@@ -17475,7 +17550,7 @@ ALTER TABLE `ps_page_type`
 -- AUTO_INCREMENT for table `ps_product`
 --
 ALTER TABLE `ps_product`
-  MODIFY `id_product` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_product` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `ps_product_attribute`
@@ -17595,7 +17670,7 @@ ALTER TABLE `ps_search_engine`
 -- AUTO_INCREMENT for table `ps_search_word`
 --
 ALTER TABLE `ps_search_word`
-  MODIFY `id_word` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=758;
+  MODIFY `id_word` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=795;
 
 --
 -- AUTO_INCREMENT for table `ps_shop`
@@ -17625,7 +17700,7 @@ ALTER TABLE `ps_specific_price`
 -- AUTO_INCREMENT for table `ps_specific_price_priority`
 --
 ALTER TABLE `ps_specific_price_priority`
-  MODIFY `id_specific_price_priority` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_specific_price_priority` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `ps_specific_price_rule`
@@ -17667,13 +17742,13 @@ ALTER TABLE `ps_stock`
 -- AUTO_INCREMENT for table `ps_stock_available`
 --
 ALTER TABLE `ps_stock_available`
-  MODIFY `id_stock_available` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id_stock_available` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `ps_stock_mvt`
 --
 ALTER TABLE `ps_stock_mvt`
-  MODIFY `id_stock_mvt` bigint NOT NULL AUTO_INCREMENT;
+  MODIFY `id_stock_mvt` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ps_stock_mvt_reason`
