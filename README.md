@@ -3,7 +3,7 @@
 Project from electronic business on fifth semester of Computer Science on Gdansk University of Technology.
 
 ## Installation
-
+**Please make your fork of a project and copy the project url from your own fork!**
 ```cmd
 git clone [project url] [project directory]
 sudo chmod +777 [project directory]
@@ -29,17 +29,19 @@ docker compose down
 5. ```git add --all # Unless there are some files you don't want to add. In that case afterwards you can use git rm -r --cached <folder> or git rm --cached <file>.```
 6. ```git commit -m [commit comment] # Remember about quotes.```
 7. ```git push origin master.```
+8. After pushing changes to your fork you can open GitHub with it and make pull request on upstream.
 
 ## Pulling changes
 
 1. Enter project directory.
 2. If containers are running close them down.
-3. ```git pull```
+3. ```git pull upstream```
 4. Clear your browser cache.
 5. ```sudo apt-get clear```
 6. ```sudo apt-get autoclear```
 7. Remove old containers from docker desktop. Don't remove volumes and images.
 8. Run containers again.
+9. If everything is correct push the changes to keep your fork up to date.
 
 ## Problems
 In case of problems you can check logs in docker desktop containers and look up for more information online.
