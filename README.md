@@ -2,6 +2,10 @@
 
 Project from electronic business on fifth semester of Computer Science on Gdansk University of Technology.
 
+# Important
+In case of any creation of new containters if the PrestaShop doesn't want to load itself there is a high chance that files in its container don't have properly set persmissions.
+Solution: Enter cmd of PrestaShop container and type ```chmod 777 -R *```.
+
 ## Installation
 **Please make your own fork of the project and copy url from your own fork!**
 ```cmd
